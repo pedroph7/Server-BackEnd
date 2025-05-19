@@ -42,5 +42,25 @@ routes.get("/funcionarios",(req,res) => {
         ]
     })
 })
-
+routes.get("/sla", (req, res) => {
+    return res.json({
+        photo: [
+            {
+                id:"1",
+                nome:"delicia",
+                imagem:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cristiano-ronaldo-cr7%3A-limited-special-editio-design-template-1ade76990ca076687849a104fb3d70b1_screen.jpg?ts=1733770873",
+            },  
+            {
+                id:"2",
+                nome:"bacana",
+                imagem:"https://ansabrasil.com.br/webimages/news_base/2023/11/19/3f97fc5f25da173e3fbe3bb0fe256bd5.jpg",
+            },  
+            {
+                id:"3",
+                nome:"gostosao",
+                imagem:"https://s.glbimg.com/es/ge/f/original/blog/03bd4a23-f06d-40ac-9bbf-97365393ef2f_CRISTIANO.jpg",
+            },  
+        ]
+    })
+})
 export default routes
