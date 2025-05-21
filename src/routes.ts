@@ -1,70 +1,71 @@
-import { Router,Request,Response } from "express";
-import userController  from "./controllers/user"
+import { Router, Request, Response } from "express";
+import userController from "./controllers/user";
 
-const routes = Router()
+const routes = Router();
 
-//rota de teste
-
-routes.get("/",(req: Request, res: Response) : any =>{
+//rota de teste, hello world
+routes.get("/", (req: Request, res: Response) : any => {
     return res.send('rota de teste')
 })
 
-//rota que retorna
-routes.get("/funcionarios",(req: Request,res: Response) :any => {
+//rota que retorna um json, uma lista nomeada "items"
+routes.get("/funcionarios", (req : Request, res: Response) : any => {
     return res.json({
         items: [
             {
-                id:"1",
-                nome:"pedro",
-                cargo:"chefe",
-                idade: 16,
-                rola: "30cm",
-                custoPorHora: 10000.0,
-                temLicense: false
+                id: "1",
+                nome: "Andre",
+                cargo: "dev",
+                idade: 37,
+                custoPorHora: 120.0,
+                temLicenca: false
             },
             {
-                id:"2",
-                nome:"gustavo",
-                cargo:"submisso",
-                idade: 18,
-                rola: "3cm",
+                id: "2",
+                nome: "Adulto",
+                cargo: "aluno",
+                idade: 17,
                 custoPorHora: 10.0,
-                temLicense: true
+                temLicenca: true
             },
             {
-                id:"3",
-                nome:"matheus",
-                cargo:"traficante",
-                idade:17,
-                rola: "5cm",
-                custoPorHora: 1000.0,
-                temLicense: true
-            },
+                id: "3",
+                nome: "3K",
+                cargo: "caixa do condor",
+                idade: 22,
+                custoPorHora: 32.70,
+                temLicenca: true
+            }
         ]
-    })
-})
-routes.get("/sla", (req:Request, res:Response) : any => {
+    });
+});
+
+routes.get("/withImages", (req: Request, res: Response) : any => {
     return res.json({
-        photo: [
+        photos: [
             {
-                id:"1",
-                nome:"delicia",
-                imagem:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cristiano-ronaldo-cr7%3A-limited-special-editio-design-template-1ade76990ca076687849a104fb3d70b1_screen.jpg?ts=1733770873",
-            },  
+                id: "1",
+                nome: "Campo",
+                imagem: "https://media.istockphoto.com/id/517188688/pt/foto/paisagem-de-montanha.jpg?s=612x612&w=0&k=20&c=uFGUrUT6gA8FrTWhE10YYzngWPlDLssKxJiDs1Qw2Qs="
+            },
             {
-                id:"2",
-                nome:"bacana",
-                imagem:"https://ansabrasil.com.br/webimages/news_base/2023/11/19/3f97fc5f25da173e3fbe3bb0fe256bd5.jpg",
-            },  
+                id: "2",
+                nome: "Montanha",
+                imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5UqN7bxmvCnQA84Smi_bMlgqKMYmbE7TzYA&s"
+            },
             {
-                id:"3",
-                nome:"gostosao",
-                imagem:"https://s.glbimg.com/es/ge/f/original/blog/03bd4a23-f06d-40ac-9bbf-97365393ef2f_CRISTIANO.jpg",
-            },  
+                id: "3",
+                nome: "Praia",
+                imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDrFQr1LLEHhOgdCd0FroVH6zFJe8sJ-nHSg&s"
+            }
         ]
     })
 })
 
-routes.post("./users",(req:Request,res:Response) : any => userController.create(req,res) )
+routes.post("/users", (req: Request, res: Response) : any => userController.create(req, res))
+routes.get("/users", (req: Request, res: Response) : any => userController.read(req, res))
+routes.put("/users/:id", (req: Request, res: Response) : any => userController.update(req,res))
+routes.delete("/users/:id", (req: Request, res: Response) : any => userController.delete(req,res))
+routes.post("/login", (req: Request, res: Response) : any => userController.login(req, res))
 
-export default routes;
+export default routes

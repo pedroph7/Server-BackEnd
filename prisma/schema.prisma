@@ -17,10 +17,11 @@ model User {
   email String
   password String
 }
+
 model List {
   id Int @id @default(autoincrement())
   description String
   price Float
   quantity Int
-  Image String
+  image String
 }
